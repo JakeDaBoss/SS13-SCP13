@@ -18,7 +18,7 @@ h1, h2, h3, h4, h5, h6	{color: #0000ff;font-family: Georgia, Verdana, sans-serif
 
 .ooc .everyone			{color: #002eb8;}
 .ooc .looc				{color: #3a9696;}
-.ooc .elevated			{color: #2e78d9;}
+.ooc .elevated			{color: #2798C0;}
 .ooc .moderator			{color: #184880;}
 .ooc .developer			{color: #1b521f;}
 .ooc .admin				{color: #b82e00;}
@@ -83,6 +83,9 @@ h1.alert, h2.alert		{color: #000000;}
 .notice					{color: #000099;}
 .alium					{color: #00ff00;}
 .cult					{color: #800080; font-weight: bold; font-style: italic;}
+.safe					{color: #3BC92A;}
+.euclid					{color: #F3BE0B; font-style: italic;}
+.keter					{color: #FF0000; font-weight: bold; font-style: italic;}
 
 .reflex_shoot			{color: #000099; font-style: italic;}
 

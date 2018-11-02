@@ -61,7 +61,7 @@ var/list/event_last_fired = list()
 	possibleEvents[/datum/event/infestation] = 100 + 100 * active_with_role["Janitor"]
 
 	possibleEvents[/datum/event/communications_blackout] = 50 + 25 * active_with_role["AI"] + active_with_role["Scientist"] * 25
-	possibleEvents[/datum/event/ionstorm] = active_with_role["AI"] * 25 + active_with_role["Cyborg"] * 25 + active_with_role["Engineer"] * 10 + active_with_role["Scientist"] * 5
+	// possibleEvents[/datum/event/ionstorm] = active_with_role["AI"] * 25 + active_with_role["Cyborg"] * 25 + active_with_role["Engineer"] * 10 + active_with_role["Scientist"] * 5
 	possibleEvents[/datum/event/grid_check] = 25 + 10 * active_with_role["Engineer"]
 	possibleEvents[/datum/event/electrical_storm] = 15 * active_with_role["Janitor"] + 5 * active_with_role["Engineer"]
 	possibleEvents[/datum/event/wallrot] = 30 * active_with_role["Engineer"] + 50 * active_with_role["Gardener"]
@@ -69,14 +69,13 @@ var/list/event_last_fired = list()
 	if(!spacevines_spawned)
 		possibleEvents[/datum/event/spacevine] = 10 + 5 * active_with_role["Engineer"]
 	if(minutes_passed >= 30) // Give engineers time to set up engine
-		possibleEvents[/datum/event/meteor_wave] = 10 * active_with_role["Engineer"]
 		possibleEvents[/datum/event/blob] = 10 * active_with_role["Engineer"]
 
 	if(active_with_role["Medical"] > 0)
 		possibleEvents[/datum/event/radiation_storm] = active_with_role["Medical"] * 10
 		possibleEvents[/datum/event/spontaneous_appendicitis] = active_with_role["Medical"] * 10
 
-	possibleEvents[/datum/event/prison_break] = active_with_role["Security"] * 50
+	possibleEvents[/datum/event/prison_break] = active_with_role["Security"] * 25
 	if(active_with_role["Security"] > 0)
 		if(!sent_spiders_to_station)
 			possibleEvents[/datum/event/spider_infestation] = max(active_with_role["Security"], 5) + 5
@@ -185,6 +184,7 @@ var/list/event_last_fired = list()
 	active_with_role["Cyborg"] = 0
 	active_with_role["Janitor"] = 0
 	active_with_role["Gardener"] = 0
+	active_with_role["Virologist"] = 0
 
 	for(var/mob/M in GLOB.player_list)
 		if(!M.mind || !M.client || M.client.is_afk(10 MINUTES)) // longer than 10 minutes AFK counts them as inactive
@@ -227,5 +227,8 @@ var/list/event_last_fired = list()
 
 		if(M.mind.assigned_role == "Gardener")
 			active_with_role["Gardener"]++
+
+		if(M.mind.assigned_role == "Virologist")
+			active_with_role["Virologist"]++
 
 	return active_with_role

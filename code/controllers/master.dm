@@ -59,6 +59,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	//used by CHECK_TICK as well so that the procs subsystems call can obey that SS's tick limits
 	var/static/current_ticklimit = TICK_LIMIT_RUNNING
 
+	var/initialization_stage = 0
+
 /datum/controller/master/New()
 	total_run_times = list()
 	// Highlander-style: there can only be one! Kill off the old and replace it with the new.
@@ -157,18 +159,20 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 // Please don't stuff random bullshit here,
 // 	Make a subsystem, give it the SS_NO_FIRE flag, and do your work in it's Initialize()
 /datum/controller/master/Initialize(delay, init_sss)
-	set waitfor = 0
+	set waitfor = FALSE
 
 	if(delay)
 		sleep(delay)
 
-	if(init_sss)
+	if(init_sss || isnull(subsystems) || !length(subsystems))
 		init_subtypes(/datum/controller/subsystem, subsystems)
 
 	report_progress("Initializing subsystems...")
 
 	// Sort subsystems by init_order, so they initialize in the correct order.
 	sortTim(subsystems, /proc/cmp_subsystem_init)
+
+	initialization_stage |= INITIALIZATION_HAS_BEGUN
 
 	var/start_timeofday = REALTIMEOFDAY
 	// Initialize subsystems.
@@ -182,6 +186,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 
 	var/msg = "Initializations complete within [time] second\s!"
+
+	initialization_stage |= INITIALIZATION_COMPLETE
+
 	report_progress(msg)
 	log_world(msg)
 
@@ -191,11 +198,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	// Sort subsystems by display setting for easy access.
 	sortTim(subsystems, /proc/cmp_subsystem_display)
 	// Set world options.
-#ifdef UNIT_TEST
-	world.sleep_offline = FALSE
-#else
-	world.sleep_offline = TRUE
-#endif
 	world.fps = config.fps
 	var/initialized_tod = REALTIMEOFDAY
 	sleep(1)

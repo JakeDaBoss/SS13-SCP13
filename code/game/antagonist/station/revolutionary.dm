@@ -28,7 +28,7 @@ var/datum/antagonist/revolutionary/revs
 	faction_invisible = 1
 	faction = "revolutionary"
 
-	blacklisted_jobs = list(/datum/job/ai, /datum/job/cyborg)
+	blacklisted_jobs = list(/datum/job/ai)
 //	restricted_jobs = list(/datum/job/captain, /datum/job/hop, /datum/job/hos, /datum/job/chief_engineer, /datum/job/rd, /datum/job/cmo, /datum/job/lawyer)
 	protected_jobs = list()
 
@@ -41,7 +41,7 @@ var/datum/antagonist/revolutionary/revs
 	if(!..())
 		return
 	global_objectives = list()
-	for(var/mob/living/carbon/human/player in SSmobs.mob_list)
+	for(var/mob/living/carbon/human/player in GLOB.mob_list)
 		if(!player.mind || player.stat==2 || !(player.mind.assigned_role in GLOB.command_positions))
 			continue
 		var/datum/objective/rev/rev_obj = new

@@ -1,5 +1,6 @@
 /mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
 	STOP_PROCESSING(SSmobs, src)
+	
 	GLOB.player_list -= src
 	GLOB.mob_list -= src
 	GLOB.dead_mob_list_ -= src
@@ -24,8 +25,11 @@
 			if(!istype(screenobj) || !screenobj.globalscreen)
 				qdel(screenobj)
 		client.screen = list()
+
 	if(mind && mind.current == src)
+		mind.current = null
 		spellremove(src)
+
 	ghostize()
 	key = null
 	..()
@@ -61,6 +65,11 @@
 	. = ..()
 	START_PROCESSING(SSmobs, src)
 
+/mob/Login()
+	..()
+	if (client)
+		GLOB.client2mob[client.ckey] = src 
+	
 /mob/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 	if(!client)	return
 
@@ -149,7 +158,7 @@
 		O.show_message(message, AUDIBLE_MESSAGE, deaf_message, VISIBLE_MESSAGE)
 
 /mob/proc/findname(msg)
-	for(var/mob/M in SSmobs.mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if (M.real_name == msg)
 			return M
 	return 0
@@ -415,7 +424,7 @@
 	set name = "Observe"
 	set category = "OOC"
 
-	if(!(initialization_stage&INITIALIZATION_COMPLETE))
+	if(!(Master.initialization_stage&INITIALIZATION_COMPLETE))
 		to_chat(src, "<span class='warning'>Please wait for server initialization to complete...</span>")
 		return
 
@@ -455,7 +464,7 @@
 				namecounts[name] = 1
 			creatures[name] = O
 
-	for(var/mob/M in sortAtom(SSmobs.mob_list))
+	for(var/mob/M in sortAtom(GLOB.mob_list))
 		var/name = M.name
 		if (names.Find(name))
 			namecounts[name]++
@@ -649,8 +658,6 @@
 			stat("Location:", "([x], [y], [z]) [loc]")
 
 	if(client.holder)
-		if(statpanel("Processes") && processScheduler)
-			processScheduler.statProcesses()
 		if(statpanel("MC"))
 			stat("CPU:","[world.cpu]")
 			stat("Instances:","[world.contents.len]")
@@ -730,10 +737,31 @@
 
 		if(G.force_stand())
 			lying = 0
+
+	var/isscp106 = isscp106(src)
+	var/isscp049 = isscp049(src)
 			
-	if ((isscp106(src) || isscp049(src)) && !incapacitated(INCAPACITATION_RESTRAINED|INCAPACITATION_BUCKLED_FULLY|INCAPACITATION_BUCKLED_PARTIALLY))
+	if ((isscp106 || isscp049) && !incapacitated(INCAPACITATION_RESTRAINED|INCAPACITATION_BUCKLED_FULLY|INCAPACITATION_BUCKLED_PARTIALLY))
 		lying = 0
 		density = 1
+
+	// update SCP-106's vis_contents icon
+	if (isscp106)
+		var/mob/living/carbon/human/scp106/H = src 
+		H.fix_icons()
+		if (lying)
+			H.reset_vision_cone()
+		else 
+			H.update_vision_cone()
+
+	// update SCP-049's vis_contents icon
+	else if (isscp049)
+		var/mob/living/carbon/human/scp049/H = src 
+		H.fix_icons()
+		if (lying)
+			H.reset_vision_cone()
+		else 
+			H.update_vision_cone()
 
 	//Temporarily moved here from the various life() procs
 	//I'm fixing stuff incrementally so this will likely find a better home.

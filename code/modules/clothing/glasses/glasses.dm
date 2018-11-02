@@ -220,6 +220,20 @@
 	darkness_view = -1
 	flash_protection = FLASH_PROTECTION_MODERATE
 
+/obj/item/clothing/glasses/threedglasses
+	name = "3D glasses"
+	desc = "A long time ago, people used these glasses to makes images from screens threedimensional."
+	icon_state = "3d"
+	item_state = "3d"
+	body_parts_covered = 0
+/*
+/obj/item/clothing/donator/wip
+	name = "3D glasses"
+	desc = "A long time ago, people used these glasses to makes images from screens threedimensional."
+	icon_state = "3d"
+	item_state = "3d"
+	body_parts_covered = 0
+*/
 /obj/item/clothing/glasses/welding
 	name = "welding goggles"
 	desc = "Protects the eyes from welders, approved by the mad scientist association."
@@ -491,3 +505,11 @@
 	item_state = "tajblind_meson"
 	off_state = "tajblind_meson"
 	body_parts_covered = EYES
+
+/obj/item/clothing/glasses/hazel
+	name = "Hazel Glasses"
+	desc = "Glasses. With a box-ish frame, and hazel-ish color. On the inside of a frame, there is what appears to be writing unreadable from a distance. "
+	icon_state = "hazel_glasses"
+	item_state = "hazel_glasses"
+	darkness_view = -1
+	flash_protection = FLASH_PROTECTION_MODERATE

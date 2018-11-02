@@ -1,4 +1,4 @@
-/client/proc/cmd_admin_drop_everything(mob/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_drop_everything(mob/M as mob in GLOB.mob_list)
 	set category = null
 	set name = "Drop Everything"
 	if(!holder)
@@ -16,7 +16,7 @@
 	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!", 1)
 	feedback_add_details("admin_verb","DEVR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_prison(mob/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_prison(mob/M as mob in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Prison"
 	if(!holder)
@@ -42,7 +42,7 @@
 		log_and_message_admins("sent [key_name_admin(M)] to the prison station.")
 		feedback_add_details("admin_verb","PRISON") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_subtle_message(mob/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_subtle_message(mob/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
 	set name = "Subtle Message"
 
@@ -206,7 +206,7 @@
 	M.audible_message(msg, narrate = TRUE)
 	log_and_message_admins(" - AudibleNarrate on [A]: [msg]")
 
-/client/proc/cmd_admin_godmode(mob/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_godmode(mob/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
 	set name = "Godmode"
 	if(!holder)
@@ -285,7 +285,7 @@ Ccomp's first proc.
 
 	var/list/mobs = list()
 	var/list/ghosts = list()
-	var/list/sortmob = sortAtom(SSmobs.mob_list)                           // get the mob list.
+	var/list/sortmob = sortAtom(GLOB.mob_list)                           // get the mob list.
 	var/any=0
 	for(var/mob/observer/ghost/M in sortmob)
 		mobs.Add(M)                                             //filter it where it's only ghosts
@@ -305,7 +305,7 @@ Ccomp's first proc.
 
 /client/proc/get_ghosts_by_key()
 	. = list()
-	for(var/mob/observer/ghost/M in SSmobs.mob_list)
+	for(var/mob/observer/ghost/M in GLOB.mob_list)
 		.[M.ckey] = M
 	. = sortAssoc(.)
 
@@ -502,14 +502,14 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	var/input = sanitize(input(usr, "Please enter anything you want the AI to do. Anything. Serious.", "What?", "") as text|null)
 	if(!input)
 		return
-	for(var/mob/living/silicon/ai/M in SSmobs.mob_list)
+	for(var/mob/living/silicon/ai/M in GLOB.mob_list)
 		if (M.stat == 2)
 			to_chat(usr, "Upload failed. No signal is being detected from the AI.")
 		else if (M.see_in_dark == 0)
 			to_chat(usr, "Upload failed. Only a faint signal is being detected from the AI, and it is not responding to our requests. It may be low on power.")
 		else
 			M.add_ion_law(input)
-			for(var/mob/living/silicon/ai/O in SSmobs.mob_list)
+			for(var/mob/living/silicon/ai/O in GLOB.mob_list)
 				to_chat(O, "<span class='warning'>" + input + "...LAWS UPDATED</span>")
 				O.show_laws()
 
@@ -521,7 +521,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		command_announcement.Announce("Ion storm detected near the [station_name()]. Please check all AI-controlled equipment for errors.", "Anomaly Alert", new_sound = 'sound/AI/ionstorm.ogg')
 	feedback_add_details("admin_verb","IONC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_rejuvenate(mob/living/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_rejuvenate(mob/living/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
 	set name = "Rejuvenate"
 	if(!holder)
@@ -646,7 +646,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	else
 		return
 
-/client/proc/cmd_admin_gib(mob/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_gib(mob/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
 	set name = "Gib"
 
@@ -686,7 +686,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	// I will both remove their SVN access and permanently ban them from my servers.
 	return
 
-/client/proc/cmd_admin_check_contents(mob/living/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_check_contents(mob/living/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
 	set name = "Check Contents"
 
@@ -794,7 +794,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	log_admin("[key_name(src)] has [evacuation_controller.deny ? "denied" : "allowed"] evacuation to be called.")
 	message_admins("[key_name_admin(usr)] has [evacuation_controller.deny ? "denied" : "allowed"] evacuation to be called.")
 
-/client/proc/cmd_admin_attack_log(mob/M as mob in SSmobs.mob_list)
+/client/proc/cmd_admin_attack_log(mob/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
 	set name = "Attack Log"
 
@@ -853,18 +853,19 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		to_chat(usr, "Random events disabled")
 		message_admins("Admin [key_name_admin(usr)] has disabled random events.", 1)
 	feedback_add_details("admin_verb","TRE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	
-	
-/client/proc/cmd_admin_cryo(mob/living/M as mob in SSmobs.mob_list)
-	set category = "Special Verbs"	
+
+
+/client/proc/cmd_admin_cryo(mob/living/M as mob in GLOB.mob_list)
+	set category = "Special Verbs"
+
 	set name = "Admin Cryo"
 	if(!check_rights(R_MOD))
-		src << "Only moderators may use this command."	
+		src << "Only moderators may use this command."
 		return
 	if(!istype(M))
 		alert("Cannot cryo a ghost")
 		return
-		
+
 	var/confirm = alert(src, "You will be removing [M] from the round, are you sure?", "Message", "Yes", "No")
 	if(confirm != "Yes")
 		return
@@ -878,23 +879,35 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				qdel(Y)
 			for(var/obj/item/clothing/under/X in M)
 				qdel(X)
+			for(var/obj/item/organ/V in M)
+				qdel(V)
 
-			var/obj/structure/closet/crate/secure/K = new /obj/structure/closet/crate/secure/(M.loc)
-			K.name = (M.real_name + " - Cryogenics Crate")
+			var/obj/structure/closet/crate/securecryo/K = new /obj/structure/closet/crate/secure(M.loc)
+			K.name = (M.real_name + " - Equipment Crate")
 			K.health = 50
 			for(var/obj/item/W in M)
 				M.drop_from_inventory(W)
 				W.loc = K
 
-				
+			// important
+			M.forceMove(null)
+
 			job_master.FreeRole(job)
 
 			message_admins("\blue [key_name_admin(usr)] has admin cryoed [key_name(M)]")
 			log_admin("[key_name(usr)] admin cryoed [key_name(M)]")
 
-			// Delete the mob.
-			//This should guarantee that ghosts don't spawn.
-			M.key = null
-			del(M)
-			M = null
-	return	
+			// remove the mob from crew records 
+			if (GLOB.mob2crew_record[M])
+				GLOB.all_crew_records -= GLOB.mob2crew_record[M]
+
+			// remove the mob from client2mob
+			if (M.ckey && GLOB.client2mob[M.ckey] == M)
+				GLOB.client2mob[M.ckey] = null
+
+			// null out ckey & client to prevent ghosts
+			M.ckey = null
+			M.client = null
+
+			// delete the mob
+			qdel(M)

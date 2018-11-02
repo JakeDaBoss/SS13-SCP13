@@ -268,6 +268,36 @@
 		reagents.add_reagent(/datum/reagent/sugar, 3)
 		bitesize = 2
 
+/obj/item/weapon/reagent_containers/food/snacks/lionbar
+	name = "lion bar"
+	desc = "Something of the old world. Weren't they discontinued in 2020?"
+	icon_state = "lionbar"
+	trash = /obj/item/trash/lionbar
+	filling_color = "#7d5f46"
+	center_of_mass = "x=15;y=15"
+	nutriment_amt = 5
+	nutriment_desc = list("candy" = 1,"stale chocolate" = 4)
+
+	New()
+		..()
+		reagents.add_reagent(/datum/reagent/sugar, 3)
+		bitesize = 3
+
+/obj/item/weapon/reagent_containers/food/snacks/lionbarlegacy
+	name = "old lion bar"
+	desc = "Something of the old world. Weren't they discontinued in 2020? The packaging is one of ancient standards, which makes this almost a collectible!"
+	icon_state = "lionbarlegacy"
+	trash = /obj/item/trash/lionbarlegacy
+	filling_color = "#7d5f46"
+	center_of_mass = "x=15;y=15"
+	nutriment_amt = 5
+	nutriment_desc = list("candy" = 1,"stale chocolate" = 4)
+
+	New()
+		..()
+		reagents.add_reagent(/datum/reagent/sugar, 3)
+		bitesize = 3
+
 /obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar
 	name = "protein bar"
 	desc = "SwoleMAX brand protein bars, guaranteed to get you feeling perfectly overconfident."
@@ -1191,9 +1221,9 @@
 
 
 /obj/item/weapon/reagent_containers/food/snacks/sosjerky
-	name = "Scaredy's Private Reserve Beef Jerky"
+	name = "Containment Jerky"
 	icon_state = "sosjerky"
-	desc = "Beef jerky made from the finest space cows."
+	desc = "To prepare for any situation, Containment Jerky! Looks like dog food."
 	trash = /obj/item/trash/sosjerky
 	filling_color = "#631212"
 	center_of_mass = "x=15;y=9"
@@ -1204,9 +1234,9 @@
 		bitesize = 2
 
 /obj/item/weapon/reagent_containers/food/snacks/no_raisin
-	name = "4no Raisins"
+	name = "Foundation Brand Raisins"
 	icon_state = "4no_raisins"
-	desc = "Best raisins in the universe. Not sure why."
+	desc = "A pack of raisins, with the Foundation symbol. Not nearly as good as the original."
 	trash = /obj/item/trash/raisins
 	filling_color = "#343834"
 	center_of_mass = "x=15;y=4"
@@ -1214,7 +1244,7 @@
 	nutriment_amt = 6
 
 /obj/item/weapon/reagent_containers/food/snacks/spacetwinkie
-	name = "Space Twinkie"
+	name = "Twinkie"
 	icon_state = "space_twinkie"
 	desc = "Guaranteed to survive longer then you will."
 	filling_color = "#ffe591"
@@ -1226,9 +1256,9 @@
 		bitesize = 2
 
 /obj/item/weapon/reagent_containers/food/snacks/cheesiehonkers
-	name = "Cheesie Honkers"
+	name = "Super Cheesie Potates Brand Chips"
 	icon_state = "cheesie_honkers"
-	desc = "Bite sized cheesie snacks that will honk all over your mouth."
+	desc = "Bite sized cheesie snacks, for an affordable price."
 	trash = /obj/item/trash/cheesie
 	filling_color = "#ffa305"
 	center_of_mass = "x=15;y=9"

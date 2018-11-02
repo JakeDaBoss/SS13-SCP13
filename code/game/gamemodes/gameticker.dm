@@ -36,6 +36,7 @@ var/global/datum/controller/gameticker/ticker
 	var/looking_for_antags = 0
 
 /datum/controller/gameticker/proc/pregame()
+	set waitfor = FALSE
 	do
 		if(!gamemode_voted)
 			pregame_timeleft = 180
@@ -50,7 +51,6 @@ var/global/datum/controller/gameticker/ticker
 			else
 				master_mode = "extended"
 
-		to_world("<b>Trying to start [master_mode]...</b>")
 		to_world("<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>")
 		to_world("Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds")
 
@@ -68,9 +68,10 @@ var/global/datum/controller/gameticker/ticker
 						for(var/i=0, i<10, i++)
 							sleep(1)
 							vote.process()
-			if(pregame_timeleft <= 0 || ((initialization_stage & INITIALIZATION_NOW_AND_COMPLETE) == INITIALIZATION_NOW_AND_COMPLETE))
+			if(pregame_timeleft <= 0 || ((Master.initialization_stage & INITIALIZATION_NOW_AND_COMPLETE) == INITIALIZATION_NOW_AND_COMPLETE))
 				current_state = GAME_STATE_SETTING_UP
 				Master.SetRunLevel(RUNLEVEL_SETUP)
+				to_world("<b>Trying to start [master_mode]...</b>")
 
 	while (!setup())
 
@@ -87,8 +88,8 @@ var/global/datum/controller/gameticker/ticker
 		if(!runnable_modes.len)
 			current_state = GAME_STATE_PREGAME
 			Master.SetRunLevel(RUNLEVEL_LOBBY)
+			Master.initialization_stage &= ~INITIALIZATION_NOW
 			to_world("<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby.")
-
 			return 0
 		if(secret_force_mode != "secret")
 			src.mode = config.pick_mode(secret_force_mode)
@@ -103,8 +104,8 @@ var/global/datum/controller/gameticker/ticker
 	if(!src.mode)
 		current_state = GAME_STATE_PREGAME
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
+		Master.initialization_stage &= ~INITIALIZATION_NOW
 		to_world("<span class='danger'>Serious error in mode setup!</span> Reverting to pre-game lobby.")
-
 		return 0
 
 	job_master.ResetOccupations()
@@ -115,9 +116,9 @@ var/global/datum/controller/gameticker/ticker
 	var/t = src.mode.startRequirements()
 	if(t)
 		to_world("<B>Unable to start [mode.name].</B> [t] Reverting to pre-game lobby.")
-
 		current_state = GAME_STATE_PREGAME
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
+		Master.initialization_stage &= ~INITIALIZATION_NOW
 		mode.fail_setup()
 		mode = null
 		job_master.ResetOccupations()
@@ -166,9 +167,6 @@ var/global/datum/controller/gameticker/ticker
 			admins_number++
 	if(admins_number == 0)
 		send2adminirc("Round has started with no admins online.")
-
-
-	processScheduler.start()
 
 	if(config.sql_enabled)
 		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
@@ -431,7 +429,7 @@ var/global/datum/controller/gameticker/ticker
 	to_world("<br>")
 
 
-	for (var/mob/living/silicon/ai/aiPlayer in SSmobs.mob_list)
+	for (var/mob/living/silicon/ai/aiPlayer in GLOB.mob_list)
 		if (aiPlayer.stat != 2)
 			to_world("<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws at the end of the round were:</b>")
 
@@ -449,7 +447,7 @@ var/global/datum/controller/gameticker/ticker
 
 	var/dronecount = 0
 
-	for (var/mob/living/silicon/robot/robo in SSmobs.mob_list)
+	for (var/mob/living/silicon/robot/robo in GLOB.mob_list)
 
 		if(istype(robo,/mob/living/silicon/robot/drone))
 			dronecount++

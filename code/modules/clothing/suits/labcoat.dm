@@ -27,6 +27,20 @@
 	icon_open = "labcoat_cmoalt_open"
 	icon_closed = "labcoat_cmoalt"
 
+/obj/item/clothing/suit/storage/toggle/labcoat/donators/aptare
+	name = "Dr. Fields' Labcoat"
+	desc = "An augmented CMO labcoat with golden stripes and a name etched into the fabric on the left side; Dr. Matthew Fields."
+	icon_state = "labcoat_aptare_open"
+	icon_open = "labcoat_aptare_open"
+	icon_closed = "labcoat_aptare"
+
+/obj/item/clothing/suit/storage/toggle/labcoat/cmoalt
+	name = "chief medical officer labcoat"
+	desc = "A labcoat with command blue highlights."
+	icon_state = "labcoat_cmoalt_open"
+	icon_open = "labcoat_aptare_open"
+	icon_closed = "labcoat_aptare"
+
 /obj/item/clothing/suit/storage/toggle/labcoat/mad
 	name = "The Mad's labcoat"
 	desc = "It makes you look capable of konking someone on the noggin and shooting them into space."
@@ -92,3 +106,36 @@
 	icon_closed = "labcoat_xy"
 	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 20, rad = 0)
 	species_restricted = list(SPECIES_IPC)
+
+/obj/item/clothing/suit/storage/toggle/labcoat/rd2
+	name = "scientist labcoat"
+	desc = "A full-body labcoat. It has a small Foundation logo on the front."
+	icon_state = "labcoat_rd2_open"
+	icon_open = "labcoat_rd2_open"
+	icon_closed = "labcoat_rd2"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	
+// Donator labcoats
+/obj/item/clothing/suit/storage/toggle/labcoat/flip
+	name = "Alper Flip's labcoat"
+	desc = "A labcoat with a small Foundation logo on the front. The name 'Alper Flip' is sewn into the collar."
+	icon_state = "flip_labcoat_open"
+	icon_open = "flip_labcoat_open"
+	icon_closed = "flip_labcoat_closed"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	
+/obj/item/clothing/suit/storage/toggle/labcoat/cmoalt/fields
+	name = "Dr. Fields' labcoat"
+	desc = "A labcoat with a small Foundation logo on the front and a golden outline. The name 'Dr. Matthew Fields' is sewn in on the left-hand side."
+	icon_state = "fields_labcoat_open"
+	icon_open = "fields_labcoat_open"
+	icon_closed = "fields_labcoat_closed"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	
+/obj/item/clothing/suit/storage/toggle/labcoat/poehl
+	name = "Dr. Poehl's labcoat"
+	desc = "This dark custom labcoat has blue crosses on either sleeve, and the name tag on the left side front says 'Dr. Poehl'. You can see a few coffee stains on the front. There's a silver Walkman peeking out from one of the front pockets."
+	icon_state = "poehl_labcoat_open"
+	icon_open = "poehl_labcoat_open"
+	icon_closed = "poehl_labcoat_closed"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS

@@ -216,6 +216,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	ignitermes = "<span class='notice'>USER fiddles with FLAME, and manages to light their NAME.</span>"
 	brand = "\improper Trans-Stellar Duty-free"
 	var/list/filling = list(/datum/reagent/tobacco = 1)
+	var/can_be_put_out = 1
 
 /obj/item/clothing/mask/smokable/cigarette/New()
 	..()
@@ -279,6 +280,22 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "dark cigarette"
 	brand = "\improper Carcinoma Angel"
 	color = "#869286"
+
+/obj/item/clothing/mask/smokable/cigarette/bluelady
+	name = "'blue lady' cigarette"
+	brand = "\improper Blue Lady"
+	desc = "The words 'Blue Lady' are written on this deftly-rolled cigarette in blue ink."
+	icon_state = "cigbluelady"
+	type_butt = /obj/item/weapon/cigbutt/bluelady
+	filling = list(/datum/reagent/tobacco/bluelady = 1)
+
+/obj/item/weapon/cigbutt/bluelady
+	icon_state = "cigbuttbluelady"
+
+/obj/item/clothing/mask/smokable/cigarette/bluelady/Initialize()
+	. = ..()
+	set_extension(src, /datum/extension/appearance, /datum/extension/appearance/bluelady)
+
 
 /obj/item/clothing/mask/smokable/cigarette/professionals
 	name = "thin cigarette"
@@ -376,7 +393,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				to_chat(user, "<span class='notice'>[src] is full.</span>")
 
 /obj/item/clothing/mask/smokable/cigarette/attack_self(mob/user as mob)
-	if(lit == 1)
+	if(lit && can_be_put_out)
 		user.visible_message("<span class='notice'>[user] calmly drops and treads on the lit [src], putting it out instantly.</span>")
 		die(1)
 	return ..()
@@ -552,7 +569,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/pipe/cobpipe
 	name = "corn cob pipe"
-	desc = "A nicotine delivery system popularized by folksy backwoodsmen, kept popular in the modern age and beyond by space hipsters."
+	desc = "A nicotine delivery system popularized by folksy backwoodsmen, kept popular in the modern age and beyond by hipsters."
 	icon_state = "cobpipeoff"
 	item_state = "cobpipeoff"
 	icon_on = "cobpipeon"  //Note - these are in masks.dmi

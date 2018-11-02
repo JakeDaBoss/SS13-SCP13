@@ -18,19 +18,42 @@ GLOBAL_LIST_EMPTY(scp173s)
 	var/last_snap = 0
 	var/next_shit = 0
 	var/list/next_blinks = list()
-	
+
 	var/last_player_shit = 0
+
+/mob/living/scp_173/examine(mob/user)
+	user << "<b><span class = 'euclid'><big>SCP-173</big></span></b> - [desc]"
 
 /mob/living/scp_173/New()
 	..()
 	GLOB.scp173s += src
 	verbs += /mob/living/proc/ventcrawl
+	add_language(LANGUAGE_GALCOM, 1) // it's a fucking magical statue
+	add_language(LANGUAGE_EAL, 1)
+	add_language(LANGUAGE_SOL_COMMON, 1)
+	add_language(LANGUAGE_UNATHI, 1)
+	add_language(LANGUAGE_SIIK_MAAS, 1)
+	add_language(LANGUAGE_SKRELLIAN, 1)
+	add_language(LANGUAGE_LUNAR, 1)
+	add_language(LANGUAGE_GUTTER, 1)
+	add_language(LANGUAGE_SIGN, 0)
+	add_language(LANGUAGE_INDEPENDENT, 1)
+	add_language(LANGUAGE_SPACER, 1)
 
 /mob/living/scp_173/Destroy()
 	GLOB.scp173s -= src
 	..()
 
+/mob/living/scp_173/say(var/message)
+	return // lol you can't talk
+
 /mob/living/scp_173/proc/IsBeingWatched()
+	// Am I being watched by eye pals?
+	for (var/mob/living/M in view(src, 7))
+		if ((istype(M, /mob/living/simple_animal/scp_131)) && (InCone(M, M.dir)))
+			return TRUE
+
+	// Am I being watched by anyone else?
 	for(var/mob/living/carbon/human/H in view(src, 7))
 		if(H.SCP)
 			continue
@@ -64,6 +87,7 @@ GLOBAL_LIST_EMPTY(scp173s)
 		visible_message("<span class='danger'>[src] snaps [H]'s neck!</span>")
 		playsound(loc, pick('sound/scp/spook/NeckSnap1.ogg', 'sound/scp/spook/NeckSnap3.ogg'), 50, 1)
 		H.death()
+		H.scp173_killed = TRUE
 
 /mob/living/scp_173/Life()
 	. = ..()
@@ -122,6 +146,7 @@ GLOBAL_LIST_EMPTY(scp173s)
 			visible_message("<span class='danger'>[src] snaps [target]'s neck!</span>")
 			playsound(loc, pick('sound/scp/spook/NeckSnap1.ogg', 'sound/scp/spook/NeckSnap3.ogg'), 50, 1)
 			target.death()
+			target.scp173_killed = TRUE
 			last_snap = world.time
 
 /mob/living/scp_173/can_ventcrawl()
@@ -138,3 +163,8 @@ GLOBAL_LIST_EMPTY(scp173s)
 		var/feces = pick(/obj/effect/decal/cleanable/blood, /obj/effect/decal/cleanable/blood/gibs, /obj/effect/decal/cleanable/mucus)
 		new feces(loc)
 
+// humans 
+/mob/living/carbon/human/set_stat(_new)
+	..(_new)
+	if (stat != DEAD)
+		scp173_killed = FALSE

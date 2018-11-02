@@ -92,7 +92,176 @@
 	if(!forceshow && istype(user,/mob/living/silicon/ai))
 		var/mob/living/silicon/ai/AI = user
 		can_read = get_dist(src, AI.camera) < 2
-	user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]'>[can_read ? info : stars(info)][stamps]</BODY></HTML>", "window=[name]")
+	var/content = info
+	var/mob/living/carbon/human/H = user
+
+	// SCP-078: Too Late To Die Young
+
+	if(H.dies_young > 0)
+		if(prob(50))
+			H.dies_young += 1
+		var/solace_possibilities = list(
+			"It hurt them, but they deserved it.",
+			"You cannot be blamed for what you did.",
+			"You had no choice.",
+			"You'll find a way to forgive yourself."
+		)
+
+		if(H.job)
+			if (H.job == "Class D")
+				solace_possibilities += list(
+					"Nobody blames you for your crimes.",
+					"You needn't feel ashamed of what brought you here.",
+					"There is no shame in what you did to survive.",
+					"It's a brutal world, and you're already atoning for your mistakes.",
+					"Thirty days. That's all it takes to see freedom again."
+				)
+			if (H.job == "LCZ Guard")
+				solace_possibilities += list(
+					"He was a death row criminal. He had it coming.",
+					"You were protecting everybody else.",
+					"You were just following orders."
+				)
+			if (H.job == "HCZ Guard")
+				solace_possibilities += list(
+					"You are the only thing standing between the monsters and them.",
+					"It was his fault for running into the HCZ. You did what you had to.",
+					"Anyone would have run, when faced with something like that."
+				)
+			if (H.job == "LCZ Junior Guard")
+				solace_possibilities += list(
+					"You're still new. Maybe you've just seen the roughest of the fights.",
+					"They're all murderers and rapists. They deserve to be here.",
+					"Nobody's going to blame you for listening to the experienced guards."
+				)
+			if (H.job == "Guard Commander")
+				solace_possibilities += list(
+					"In time, everyone will understand why you gave the orders you did.",
+					"You're protecting the Director from the truth of what it takes to run this place.",
+					"Nobody has to know what your team did that day."
+				)
+			if (H.job == "LCZ Zone Commander")
+				solace_possibilities += list(
+					"You were just protecting your Junior Guard.",
+					"You didn't show weakness, and the rookies respect you for it.",
+					"You gave the order, they carried it out. Brutal, but it had to be done."
+				)
+			if (H.job == "HCZ Zone Commander")
+				solace_possibilities += list(
+					"The breach in your sector wasn't your fault.",
+					"You didn't put them at risk. They signed up for this.",
+					"It was the Containment Engineeer's responsibility."
+				)
+			if (H.job == "EZ Senior Agent")
+				solace_possibilities += list(
+					"An evacuation was impossible. You just told them the truth.",
+					"Some people are more worth protecting than others.",
+					"You gave the order, and your agents carried it out."
+				)
+			if (H.job == "EZ Agent")
+				solace_possibilities += list(
+					"She cried when you demanded answers. But you had to be sure she wasn't a spy.",
+					"This facility's secrets are worth anyone's freedom.",
+					"Asking the hard questions is just part of the job."
+				)
+			if (H.job == "Containment Engineer")
+				solace_possibilities += list(
+					"The breach in HCZ wasn't your fault.",
+					"You don't do the experiments. Your hands are clean.",
+					"It killed three people before they recontained it."
+				)
+			if (H.job == "Senior Scientist")
+				solace_possibilities += list(
+					"Their sacrifices are for the greater good.",
+					"The other scientists are counting on you to save humanity.",
+					"The associates look up to you. You cannot show regret."
+				)
+			if (H.job == "Scientist")
+				solace_possibilities += list(
+					"Their sacrifices are for the greater good.",
+					"Groundbreaking treatments need live subjects to be perfected.",
+					"Your work will save humanity. Right?"
+				)
+			if (H.job == "Scientist Associate")
+				solace_possibilities += list(
+					"You're new here. You'll get used to it.",
+					"Maybe the experiments aren't always like this.",
+					"Your work will save humanity!"
+				)
+			if (H.job == "Facility Director")
+				solace_possibilities += list(
+					"In time, everyone will understand why this facility was needed.",
+					"The end justifies the means.",
+					"When things truly go wrong, you save yourself."
+				)
+			if (H.job == "Research Director")
+				solace_possibilities += list(
+					"If we did not contain them, it would be much worse.",
+					"Your experiments save countless lives.",
+					"The younger scientists do not understand the sacrifices you make."
+				)
+			if (H.job == "Medical Doctor")	
+				solace_possibilities += list(
+					"There were good reasons not to save him.",
+					"Some patients really are more important.",
+					"It would have ruined the experiment if you'd stepped in."
+				)
+			if (H.job == "Surgeon")	
+				solace_possibilities += list(
+					"He would have died on the table anyway.",
+					"You didn't have enough time to remove the bullets.",
+					"Some of them don't deserve surgery."
+				)
+			if (H.job == "Janitor")
+				solace_possibilities += list(
+					"Memory is a small price to pay for comfort.",
+					"You're not responsible for anything that happens here. It's just a job.",
+					"No one here has cleaner hands than you."
+				)
+			if (H.job == "Cook")
+				solace_possibilities += list(
+					"Memory is a small price to pay for comfort.",
+					"You're not responsible for anything that happens here. It's just a job.",
+					"You aren't to blame. You just serve the food."
+				)
+			if (H.job == "Bartender")
+				solace_possibilities += list(
+					"Memory is a small price to pay for comfort.",
+					"You're not responsible for anything that happens here. It's just a job.",
+					"You aren't to blame. You just pour the drinks."
+				)
+		if (H.dies_young > 4)
+			solace_possibilities += list(
+				"There is no shame in this life you have lived.",
+				"Your life was spent well, if this is how it ends.",
+				"Even if you die today, you will do no more wrong.",
+				"Your life was not wasted, in the end."
+			)
+		if (H.dies_young > 7)
+			solace_possibilities = list(
+				"If you let yourself see tomorrow, you will only hurt them again.",
+				"When you finally end it all, the guilt will end too.",
+				"You know what you have to do to redeem yourself.",
+				"You'll never harm anyone again, once you're gone.",
+				"Nobody will miss you. They barely even know your name.",
+				"It's better for everyone if you get rid of yourself.",
+				"Everyone will be better off when you end it all."
+			)
+		var/solace = pick(solace_possibilities)
+		var/fullstop = findtext(info,". ")
+		while(prob(30))
+			var/nextFullstop = findtext(info,". ", fullstop + 1)
+			if (nextFullstop > fullstop)
+				fullstop = nextFullstop
+
+		if(fullstop)
+			var/start_text = copytext(info, 1, fullstop + 2)
+			var/end_text = copytext(info, fullstop + 1, 0)
+			content = start_text + solace + end_text
+
+	// End of SCP-078's horrible messages.
+
+	user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]'>[can_read ? content : stars(content)][stamps]</BODY></HTML>", "window=[name]")
 	onclose(user, "[name]")
 
 /obj/item/weapon/paper/verb/rename()
@@ -456,6 +625,11 @@
 /obj/item/weapon/paper/exodus_cmo
 	name = "outgoing CMO's notes"
 	info = "<I><center>To the incoming CMO of Exodus:</I></center><BR><BR>I wish you and your crew well. Do take note:<BR><BR><BR>The Medical Emergency Red Phone system has proven itself well. Take care to keep the phones in their designated places as they have been optimised for broadcast. The two handheld green radios (I have left one in this office, and one near the Emergency Entrance) are free to be used. The system has proven effective at alerting Medbay of important details, especially during power outages.<BR><BR>I think I may have left the toilet cubicle doors shut. It might be a good idea to open them so the staff and patients know they are not engaged.<BR><BR>The new syringe gun has been stored in secondary storage. I tend to prefer it stored in my office, but 'guidelines' are 'guidelines'.<BR><BR>Also in secondary storage is the grenade equipment crate. I've just realised I've left it open - you may wish to shut it.<BR><BR>There were a few problems with their installation, but the Medbay Quarantine shutters should now be working again  - they lock down the Emergency and Main entrances to prevent travel in and out. Pray you shan't have to use them.<BR><BR>The new version of the Medical Diagnostics Manual arrived. I distributed them to the shelf in the staff break room, and one on the table in the corner of this room.<BR><BR>The exam/triage room has the walking canes in it. I'm not sure why we'd need them - but there you have it.<BR><BR>Emergency Cryo bags are beside the emergency entrance, along with a kit.<BR><BR>Spare paper cups for the reception are on the left side of the reception desk.<BR><BR>I've fed Runtime. She should be fine.<BR><BR><BR><center>That should be all. Good luck!</center>"
+
+/obj/item/weapon/paper/dclass_orientation
+	name = "Class-D Orientation Letter"
+	info = "<small>Greetings,<br><br>On behalf of all staff within The Foundation, we welcome you to Site-53. You have chosen, or been chosen for the honor of joining the Foundation Rehabilitation Program. During your thirty day stay within this facility, you will be known as Class-D personnel, and be given a unique numerical designation for ease of access, which has been printed on your new ID card. <br><br>Over the course of your stay here, you will undergo various programs to ensure that you are ready to re-enter the world again. You will be given the opportunity to select a job within your block, in order to assist your fellow D-Class. From working the kitchen, to digging out objects within our mining area. On top of this, you may be selected for various medical or research tests to assist in our projects. What are those projects? Unfortunately, we can't tell you that.<br><br>Given that you are cooperative with our staff for the entirety of your stay here, you will be released back into the world, and have your criminal record erased completely. With that being said, we hope that you enjoy your stay here.<br><br>Sincerely,<br>The Administrator</small>"
+	desc = "A laminated piece of paper given to D-Class personnel upon their arrival."
 
 /obj/item/weapon/paper/exodus_bartender
 	name = "shotgun permit"

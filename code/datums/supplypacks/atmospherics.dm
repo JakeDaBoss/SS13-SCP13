@@ -15,8 +15,6 @@
 					/obj/item/clothing/suit/storage/hazardvest = 2,
 					/obj/item/clothing/suit/armor/vest = 2,
 					/obj/item/weapon/tank/emergency/oxygen/engi = 4,
-			 		/obj/item/clothing/suit/space/emergency = 4,
-					/obj/item/clothing/head/helmet/space/emergency = 4,
 					/obj/item/clothing/mask/gas = 4,
 					/obj/item/device/flashlight/glowstick = 5)
 	cost = 45
@@ -80,7 +78,7 @@
 	cost = 40
 	containername = "\improper N2O gas canister crate"
 	containertype = /obj/structure/closet/crate/secure/large
-	access = access_atmospherics
+	access = access_mtflvl3
 
 /decl/hierarchy/supply_pack/atmospherics/canister_carbon_dioxide
 	name = "Carbon dioxide gas canister"
@@ -88,7 +86,7 @@
 	cost = 40
 	containername = "\improper CO2 canister crate"
 	containertype = /obj/structure/closet/crate/secure/large
-	access = access_atmospherics
+	access = access_mtflvl3
 
 /decl/hierarchy/supply_pack/atmospherics/fuel
 	name = "Fuel tank crate"
@@ -101,13 +99,3 @@
 	contains = list(/obj/item/weapon/tank/phoron = 3)
 	cost = 30
 	containername = "\improper Phoron tank crate"
-
-/decl/hierarchy/supply_pack/atmospherics/voidsuit
-	name = "Atmospherics voidsuit"
-	contains = list(/obj/item/clothing/suit/space/void/atmos/alt,
-					/obj/item/clothing/head/helmet/space/void/atmos/alt,
-					/obj/item/clothing/shoes/magboots)
-	cost = 120
-	containername = "\improper Atmospherics voidsuit crate"
-	containertype = /obj/structure/closet/crate/secure/large
-	access = access_atmospherics

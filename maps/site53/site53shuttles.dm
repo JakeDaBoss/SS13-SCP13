@@ -194,6 +194,7 @@
 	name = "Engineering Department"
 	landmark_tag = "nav_engineering_out"
 	base_turf = /turf/simulated/floor/reinforced
+	base_area = /area/site53/engineering/primaryhallway
 
 /obj/effect/shuttle_landmark/engineering/internim
 	name = "In transit"
@@ -227,6 +228,7 @@
 	waypoint_station = "nav_hcz_start"
 	waypoint_offsite = "nav_hcz_out"
 
+
 /obj/effect/shuttle_landmark/hcz/start
 	name = "Tram Hub"
 	landmark_tag = "nav_hcz_start"
@@ -236,6 +238,7 @@
 	name = "Heavy Containment Zone"
 	landmark_tag = "nav_hcz_out"
 	base_turf = /turf/simulated/floor/reinforced
+	base_area = /area/site53/uhcz/tramstation
 
 /datum/shuttle/autodock/ferry/lcz
 	name = "Light Containment Tram"
@@ -243,6 +246,7 @@
 	shuttle_area = list(/area/site53/tram/lcz)
 	waypoint_station = "nav_lcz_start"
 	waypoint_offsite = "nav_lcz_out"
+
 
 /obj/effect/shuttle_landmark/lcz/start
 	name = "Tram Hub"
@@ -253,6 +257,7 @@
 	name = "Light Containment Zone"
 	landmark_tag = "nav_lcz_out"
 	base_turf = /turf/simulated/floor/reinforced
+	base_area = /area/site53/ulcz/tram
 
 /datum/shuttle/autodock/multi/antag/rescue
 	name = "Rescue"
@@ -302,3 +307,61 @@
 /obj/effect/shuttle_landmark/ert/deck1
 	name =  "Southwest of Fourth deck"
 	landmark_tag = "nav_ert_deck1"
+
+//Merc
+
+/datum/shuttle/autodock/multi/antag/mercenary
+	name = "Mercenary"
+	warmup_time = 0
+	destination_tags = list(
+		"nav_merc_deck1",
+		"nav_merc_dock",
+		"nav_merc_start",
+		)
+	shuttle_area = /area/syndicate_station/start
+	dock_target = "merc_shuttle"
+	current_location = "nav_merc_start"
+	landmark_transition = "nav_merc_transition"
+	announcer = "SEV Torch Sensor Array"
+	home_waypoint = "nav_merc_start"
+	arrival_message = "Attention, unknown vessel detected entering site proximity."
+	departure_message = "Attention, unknown vessel detected leaving site proximity."
+
+/obj/effect/shuttle_landmark/merc/start
+	name = "Mercenary Base"
+	landmark_tag = "nav_merc_start"
+	docking_controller = "merc_base"
+
+/obj/effect/shuttle_landmark/merc/internim
+	name = "In transit"
+	landmark_tag = "nav_merc_transition"
+
+/obj/effect/shuttle_landmark/merc/dock
+	name = "Docking Port"
+	landmark_tag = "nav_merc_dock"
+	docking_controller = "nuke_shuttle_dock_airlock"
+
+/obj/effect/shuttle_landmark/merc/deck1
+	name = "Site53"
+	landmark_tag = "nav_merc_deck1"
+	base_area = /area/site53/surface/surface
+
+//
+
+/datum/shuttle/autodock/ferry/supply/drone
+	name = "Supply Drone"
+	location = 1
+	warmup_time = 10
+	shuttle_area = /area/supply/dock
+	waypoint_offsite = "nav_cargo_start"
+	waypoint_station = "nav_cargo_station"
+
+/obj/effect/shuttle_landmark/supply/centcom
+	name = "Offsite"
+	landmark_tag = "nav_cargo_start"
+
+/obj/effect/shuttle_landmark/supply/station
+	name = "Landing Pad"
+	landmark_tag = "nav_cargo_station"
+	base_area = /area/site53/logistics/logistics
+	base_turf = /turf/simulated/floor/tiled/monotile

@@ -36,7 +36,7 @@
 
 	var/list/match = list()
 
-	for(var/mob/M in SSmobs.mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if(restrict_type && !istype(M, restrict_type))
 			continue
 		var/strings = list(M.name, M.ckey)
@@ -118,11 +118,6 @@
 	// Create robolimbs for chargen.
 	populate_robolimb_list()
 
-	processScheduler = new
-	master_controller = new /datum/controller/game_controller()
-
-	processScheduler.deferSetupFor(/datum/controller/process/ticker)
-	processScheduler.setup()
 	Master.Initialize(10, FALSE)
 
 #ifdef UNIT_TEST
@@ -482,8 +477,6 @@ var/world_topic_spam_protect_time = world.timeofday
 		sound_to(world, sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')))// random end sounds!! - LastyBatsy
 
 		*/
-
-	processScheduler.stop()
 
 	if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 		for(var/client/C in GLOB.clients)

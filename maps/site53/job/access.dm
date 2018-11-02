@@ -2,6 +2,14 @@
 * Deep Space Site 90 *
 *********************/
 
+// NTF
+
+/var/const/access_mtf = 299
+/datum/access/mtf
+	id = access_mtf
+	desc = "MTF"
+	region = ACCESS_TYPE_CENTCOM
+
 // MTF
 
 /var/const/access_mtflvl1 = 300
@@ -123,3 +131,149 @@
 	id = access_dclassjanitorial
 	desc = "D-Class Janitorial"
 	region = ACCESS_REGION_GENERAL
+
+// ARCHIVE
+
+/var/const/access_archive = 600
+/datum/access/archive
+	id = access_archive
+	desc = "Archive"
+	region = ACCESS_REGION_GENERAL
+
+// KEYCARD AUTH
+
+/var/const/access_keyauth = 601
+/datum/access/keyauth
+	id = access_keyauth
+	desc = "Keycard Authentication Access"
+	region = ACCESS_REGION_COMMAND
+
+// TELECOMMS
+
+/var/const/access_telecommsgen = 701
+/datum/access/telecommsgen
+	id = access_telecommsgen
+	desc = "Communications General"
+	region = ACCESS_REGION_COMMAND
+
+/var/const/access_servers = 702
+/datum/access/servers
+	id = access_servers
+	desc = "Basement Level Server Farm"
+	region = ACCESS_REGION_COMMAND
+
+/var/const/access_commtower = 703
+/datum/access/commtower
+	id = access_commtower
+	desc = "Communications Tower"
+	region = ACCESS_REGION_COMMAND
+
+// TELECOMMS CHANNELS - THESE DON'T GO ON DOORS
+
+/var/const/access_eng_comms = 730
+/datum/access/eng_comms
+	id = access_eng_comms
+	desc = "Engineering Comms"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_sci_comms = 731
+/datum/access/sci_comms
+	id = access_sci_comms
+	desc = "Research Comms"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_sec_comms = 732
+/datum/access/sec_comms
+	id = access_sec_comms
+	desc = "Security Comms"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_log_comms = 733
+/datum/access/log_comms
+	id = access_log_comms
+	desc = "Logistics Comms"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_civ_comms = 734
+/datum/access/civ_comms
+	id = access_civ_comms
+	desc = "Civilian Comms"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_med_comms = 735
+/datum/access/med_comms
+	id = access_med_comms
+	desc = "Medical Comms"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_com_comms = 736
+/datum/access/com_comms
+	id = access_com_comms
+	desc = "Command Comms"
+	region = ACCESS_REGION_NONE
+
+// LOGISTICS
+
+/var/const/access_logofficer = 800
+/datum/access/logofficer
+	id = access_logofficer
+	desc = "Logistics Officer's Office"
+	region = ACCESS_REGION_COMMAND
+
+/var/const/access_logistics = 801
+/datum/access/logistics
+	id = access_logistics
+	desc = "Logistics"
+	region = ACCESS_REGION_NONE
+
+// MISC
+
+/var/const/access_s53bar = 900
+/datum/access/bar
+	id = access_bar
+	desc = "Tram Hub Bar"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_s53kitchen = 901
+/datum/access/kitchen
+	id = access_kitchen
+	desc = "Tram Hub Kitchen"
+	region = ACCESS_REGION_NONE
+
+// MEDICAL
+
+/var/const/access_medicalgen = 930
+/datum/access/medicalgen
+	id = access_medicalgen
+	desc = "General Medical Access"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_medicalviro = 931
+/datum/access/medicalviro
+	id = access_medicalviro
+	desc = "Virology"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_medicalpsych = 932
+/datum/access/medicalpsych
+	id = access_medicalpsych
+	desc = "Psychiatry"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_medicalequip = 933
+/datum/access/medicalequip
+	id = access_medicalequip
+	desc = "Medical Equipment"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_medicalchem = 934
+/datum/access/medicalchem
+	id = access_medicalchem
+	desc = "Chemistry"
+	region = ACCESS_REGION_NONE
+
+/var/const/access_s53cmo = 935
+/datum/access/s53cmo
+	id = access_s53cmo
+	desc = "CMO"
+	region = ACCESS_REGION_COMMAND

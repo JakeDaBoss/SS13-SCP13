@@ -6,7 +6,7 @@
 	program_key_state = "med_key"
 	program_menu_icon = "heart"
 	extended_desc = "This program connects to life signs monitoring system to provide basic information on crew health."
-	required_access = access_mtflvl1
+	req_one_access = list(access_mtflvl1, access_medicalgen)
 	requires_ntnet = 1
 	network_destination = "crew lifesigns monitoring system"
 	size = 11
@@ -24,7 +24,7 @@
 	if(href_list["track"])
 		if(isAI(usr))
 			var/mob/living/silicon/ai/AI = usr
-			var/mob/living/carbon/human/H = locate(href_list["track"]) in SSmobs.mob_list
+			var/mob/living/carbon/human/H = locate(href_list["track"]) in GLOB.mob_list
 			if(hassensorlevel(H, SUIT_SENSOR_TRACKING))
 				AI.ai_actual_track(H)
 		return 1

@@ -88,7 +88,7 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 /mob/observer/ghost/Topic(href, href_list)
 	if (href_list["track"])
 		if(istype(href_list["track"],/mob))
-			var/mob/target = locate(href_list["track"]) in SSmobs.mob_list
+			var/mob/target = locate(href_list["track"]) in GLOB.mob_list
 			if(target)
 				ManualFollow(target)
 		else
@@ -137,8 +137,17 @@ Works together with spawning an observer, noted above.
 	// Are we the body of an aghosted admin? If so, don't make a ghost.
 	if(teleop && istype(teleop, /mob/observer/ghost))
 		var/mob/observer/ghost/G = teleop
-		if(G.admin_ghosted)
+
+		// teleop sometimes ends up pointing to ghosts that were supposed to be deleted, but weren't because of teleop still referencing them
+		if (G.gc_destroyed)
+			teleop = null 
+
+		else if (!G.loc)
+			QDEL_NULL(teleop)
+
+		else if (G.admin_ghosted)
 			return
+
 	if(key)
 		hide_fullscreens()
 		var/mob/observer/ghost/ghost = new(src)	//Transfer safety to observer spawning proc.
@@ -206,7 +215,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!admin_ghosted)
 		announce_ghost_joinleave(mind, 0, "They now occupy their body again.")
 	return 1
-	
+
 /mob/observer/ghost/proc/reenter_corpse_p()
 	stop_following()
 	mind.current.key = key
@@ -286,19 +295,19 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(!fh.show_entry()) return
 	ManualFollow(fh.followed_instance)
-	
+
 /mob/observer/ghost/verb/become_classd()
 	set category = "Ghost"
 	set name = "Become D-Class"
 	set desc = "Spawn in as a new D-Class."
-	if (world.time - timeofdeath >= 5 MINUTES)
+	if (world.time - timeofdeath >= 10 MINUTES)
 		if (ticker.current_state == GAME_STATE_PLAYING)
 			// create and possess a new mob
 			var/mob/living/carbon/human/H = new
 			var/datum/job/ref = job_master.occupations_by_type[/datum/job/assistant]
 			if (ref && ref.is_position_available())
 				job_master.EquipRank(H, "Class D", TRUE)
-				
+
 				H.do_possession(src)
 				H.forceMove(get_turf(job_master.get_roundstart_spawnpoint("Class D")))
 
@@ -306,20 +315,20 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				H.update_icon()
 
 				if (H.back)
-					var/deleted = H.back 
+					var/deleted = H.back
 					if (H.remove_from_mob(deleted))
 						qdel(deleted)
 
-			else 
+			else
 				to_chat(src, "<span class = 'danger'>This position is not available right now. Wait for another Class-D to die.</span>")
-		else 
+		else
 			to_chat(src, "<span class = 'danger'>The game has not started yet, or has already ended.</span>")
-	else 
-		to_chat(src, "<span class = 'danger'>You cannot spawn as a D-Class for [round(((5 MINUTES) - (world.time - timeofdeath))/600)] more minutes.</span>")
-				
+	else
+		to_chat(src, "<span class = 'danger'>You cannot spawn as a D-Class for [round(((10 MINUTES) - (world.time - timeofdeath))/600)] more minutes.</span>")
+
 /mob/observer/ghost/verb/become_scp()
 	set category = "Ghost"
-	set name = "Become SCP"
+	set name = "Become Euclid/Keter SCP"
 	set desc = "Take control of a clientless SCP."
 
 	if (world.time - timeofdeath >= 5 MINUTES)
@@ -340,7 +349,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 					scps += M
 			// add new humanoid SCPs here or they won't be playable - Kachnov
 			if (scps.len)
-				var/mob/living/scp = input(src, "Which SCP do you want to take control of?") as null|anything in scps
+				var/mob/living/scp = input(src, "Which Euclid/Keter SCP do you want to take control of?") as null|anything in scps
 				if (scp && !scp.client)
 					scp.do_possession(src)
 					if (ishuman(scp))
@@ -374,16 +383,17 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 							/mob/living/carbon/human/verb/yawn,
 							/mob/living/carbon/human/verb/hug,
 							/mob/living/carbon/human/verb/scream,
-							/mob/living/carbon/human/verb/emoteclearthroat
+							/mob/living/carbon/human/verb/emoteclearthroat,
+							/mob/living/verb/lay_down
 						)
 				else
 					src << "<span class = 'danger'>This SCP has already been taken by someone else.</span>"
 			else
-				src << "<span class = 'danger'>There are no available SCPs.</span>"
+				src << "<span class = 'danger'>There are no available Euclid/Keter SCPs.</span>"
 		else
-			src << "<span class = 'danger'>You cannot take control of a SCP until the security level is Red, Delta, or Black.</span>"
+			src << "<span class = 'danger'>You cannot take control of a Euclid/Keter SCP until the security level is Red, Delta, or Black.</span>"
 	else
-		src << "<span class = 'danger'>You cannot spawn as a SCP for [round(((5 MINUTES) - (world.time - timeofdeath))/600)] more minutes.</span>"
+		src << "<span class = 'danger'>You cannot spawn as a Euclid/Keter SCP for [round(((5 MINUTES) - (world.time - timeofdeath))/600)] more minutes.</span>"
 
 
 /mob/observer/ghost/proc/ghost_to_turf(var/turf/target_turf)
@@ -487,6 +497,44 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		host.ckey = src.ckey
 		host.status_flags |= NO_ANTAG
 		to_chat(host, "<span class='info'>You are now a mouse. Try to avoid interaction with players, and do not give hints away that you are more than a simple rodent.</span>")
+
+/mob/observer/ghost/verb/become_safe()
+	set name = "Become Safe SCP"
+	set category = "Ghost"
+
+	// if(config.disable_player_safe_scps)
+	// 	to_chat(src, "<span class='warning'>Spawning as adorable Safe SCPs is currently disabled.</span>")
+	// 	return
+
+	if(!MayRespawn(1, ANIMAL_SPAWN_DELAY))
+		return
+
+	//find a viable Safe class candidate
+	var/list/scps = list()
+	for (var/scp131 in GLOB.scp131s)
+		var/mob/M = scp131
+		if (!M.client)
+			scps += M
+	for (var/scp529 in GLOB.scp529s)
+		var/mob/M = scp529
+		if (!M.client)
+			scps += M
+	for (var/scp999 in GLOB.scp999s)
+		var/mob/M = scp999
+		if (!M.client)
+			scps += M
+	if (scps.len)
+		var/mob/living/scp = input(src, "Which Safe SCP do you want to take control of?") as null|anything in scps
+		if (scp && !scp.client)
+			scp.do_possession(src)
+			announce_ghost_joinleave(src, 0, "They are now a Safe SCP.")
+			if(src)
+				to_chat(src, "<span class='info'>You are now a Safe SCP. Be sure to read your relevant SCP page and roleplay accordingly!</span>")
+		else 
+			to_chat(src, "<span class='warning'>Someone has already taken control of this SCP.</span>")
+	else
+		to_chat(src, "<span class='warning'>All playable Safe SCPs are currently being played.</span>")
+	
 /mob/observer/ghost/verb/view_manfiest()
 	set name = "Show Crew Manifest"
 	set category = "Ghost"

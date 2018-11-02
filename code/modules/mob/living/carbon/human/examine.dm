@@ -8,6 +8,9 @@
 	var/skipeyes = 0
 	var/skipface = 0
 
+	if(!isobserver(user))
+		user.visible_message("<span class='notice'><font size=1><i>[user] looks at [src].</i></font></span>")
+
 	//exosuits and helmets obscure our view and stuff.
 	if(wear_suit)
 		skipgloves = wear_suit.flags_inv & HIDEGLOVES
@@ -138,6 +141,9 @@
 			msg += "<span class='warning'>[T.He] [T.is] extremely jittery.</span>\n"
 		else if(jitteriness >= 100)
 			msg += "<span class='warning'>[T.He] [T.is] twitching ever so slightly.</span>\n"
+
+	if (scp173_killed)
+		msg += "<span class='danger'>[T.His] neck is bent in an awkward angle.</span>\n"
 
 	//Disfigured face
 	if(!skipface) //Disfigurement only matters for the head currently.

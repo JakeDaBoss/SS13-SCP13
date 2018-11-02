@@ -53,6 +53,10 @@
 
 #define ismachinery(A) istype(A, /obj/machinery)
 
+#define isvent(A) istype(A, /obj/machinery/atmospherics/unary/vent_pump)
+
+#define iscryopod(A) istype(A, /obj/machinery/cryopod)
+
 #define isghost(A) istype(A, /mob/observer/ghost)
 
 #define isobserver(A) istype(A, /mob/observer)

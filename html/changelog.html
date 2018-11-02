@@ -31,15 +31,15 @@
 	</tr>
 </table>
 
-<br><b>Baystation 12 Credit List</b>
+<br><b>SCP13 Credit List</b>
 <table align='center' class="top">
 	<tr>
 		<td valign='top'>
             <font size='2'><b>Current Project Maintainers:</b> <a href='https://github.com/SS13-SCP13/SS13-SCP13/network/members'>-Click Here-</a><br></font>
 			<font size='2'><b>Currently Active GitHub contributor list:</b> <a href='https://github.com/SS13-SCP13/SS13-SCP13/graphs/contributors'>-Click Here-</a><br></font>
 			<font size='2'><b>Lead Project Developer:</b> TheLion1675<br></font>
-			<font size='2'><b>Programming:</b> TheLion1675, affurit, memeopolis, Steamp0rt, ShinDes, Kirmaster<br></font>
-			<font size='2'><b>Design:</b> TheLion1675, m11<br></font>
+			<font size='2'><b>Programming:</b> TheLion1675, affurit, memeopolis, Steamp0rt, ShinDes, TehFlaminTaco<br></font>
+			<font size='2'><b>Design:</b> TheLion1675, m11, LucasChao, Yellowminer, Stobarico<br></font>
 			<font size='2'><b>Sounds:</b> SKerrigan (Female Voice)<br></font>
             <font size='2'><b>Main Testers:</b> Anyone who has submitted a bug to the issue tracker<br></font>
 			<font size='2'><b>Thanks to:</b> The Baystation developers for their outstanding assistance, in special GinjaNinja32 and CrimsonShrike<br></font>
@@ -57,6 +57,345 @@
 		
 		-->
 		<div class="commit sansserif">
+			<h2 class="date">26 October 2018</h2>
+			<h3 class="author">Memeopolis updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">People killed by SCP-173 no longer have a pulse.</li>
+				<li class="tweak">Added a fluff message to people killed by SCP-173.</li>
+				<li class="bugfix">Fixed an exploit with SCP-106's Phase Through Object ability.</li>
+			</ul>
+			<h3 class="author">Rhicora updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added SCP-078.</li>
+				<li class="rscadd">Added SCP-013.</li>
+				<li class="rscadd">Added SCP-131. Made A and B playable in Safe mode.</li>
+				<li class="tweak">Separated Safe SCP ghost spawner from the Euclid/Keter one.</li>
+				<li class="tweak">Made SCP-999 playable in Safe mode.</li>
+				<li class="tweak">Made SCP-529 playable in Safe mode.</li>
+				<li class="tweak">Edited the frequency of some events, removed some more bad ones.</li>
+				<li class="tweak">Reduced the speed of some SCPs, but not quite to human speed.</li>
+				<li class="rscadd">Added custom labcoats and glasses for some Patrons.</li>
+			</ul>
+			<h3 class="author">TheLion1675 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixes an issue where Communications Officers cannot make use of camera networks.</li>
+				<li class="bugfix">Fixes an issue where EZ Agents could not access the research wing.</li>
+				<li class="bugfix">Fixes an empty security crate in logistics.</li>
+				<li class="rscadd">Added documentation for SCP-078, 013 and 131.</li>
+				<li class="maptweak">Mapped in SCP-078, 013 and 131.</li>
+				<li class="maptweak">Mapped in a general purpose testing laboratory for Safe SCP's. It's located opposite of Josie's chamber.</li>
+			</ul>
+
+			<h2 class="date">19 October 2018</h2>
+			<h3 class="author">FurryDog updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added a log message that will appear for you and everyone who has you in their sight if you examine something</li>
+				<li class="rscadd">Added hazmat suits, rubber gloves for them and oxypack.</li>
+				<li class="rscadd">Now oxygen tanks will start with full oxygen in it!</li>
+				<li class="rscadd">Added new gas mask.</li>
+			</ul>
+			<h3 class="author">Memeopolis updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Made depth scanners update in real time.</li>
+				<li class="bugfix">People who were admin-cryoed no longer show up in the Crew Manifest.</li>
+			</ul>
+			<h3 class="author">Pandolphina updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Changes snack names to SCP Variants, and changes some small fluff in the tools code.</li>
+				<li class="tweak">Renames assembly crate to fuel assembly crate, renames Phoron Tank to Fuel Tank</li>
+				<li class="tweak">Removes more mentions of NT and space.</li>
+				<li class="tweak">Replaces NTNet mentions with Foundation</li>
+				<li class="rscadd">Makes cargo crates work with access</li>
+				<li class="rscadd">Adds guard gear crate, SMG crate and pistol crate</li>
+				<li class="rscdel">Removes wizard/witch crates</li>
+				<li class="tweak">Removes Exosuit circuit crates, and spacesuits from emergency crate</li>
+			</ul>
+			<h3 class="author">Pandolphina + Rhicora updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Makes cargo crates work with access</li>
+				<li class="rscadd">Adds guard gear crate, SMG crate and pistol crate</li>
+				<li class="rscdel">Removes wizard/witch crates</li>
+			</ul>
+			<h3 class="author">Rhicora updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added distinct access for all comms channels, allowing IDs to be set up with custom comms access.</li>
+				<li class="rscadd">Added back the Comms Officer and the Comms Technician, currently 0 slots.</li>
+				<li class="tweak">Uncordoned the Communications Tower.</li>
+				<li class="tweak">Gave Comms personnel lots of channels but little physical access.</li>
+				<li class="tweak">SD no longer gets department channels, that is for the Tower or department head to coordinate.</li>
+				<li class="bugfix">Shortwaves will now work on departmental channels in our new access system.</li>
+				<li class="bugfix">Traitor roles will use their protected jobs list - SD, RD, etc. will stop going rogue.</li>
+				<li class="rscdel">Remove several space-themed events from the rotation.</li>
+				<li class="rscdel">Remove several boring events (money hack, news) from the rotation.</li>
+				<li class="tweak">Colds are a little less likely, especially with no virologist.</li>
+				<li class="bugfix">Prison break event now targets a random section of the D-Zone instead of nothing.</li>
+				<li class="tweak">Flavortext changes around evac to indicate whether it is site abandonment or a shift change.</li>
+				<li class="bugfix">Removes all Bluespace jump effects during evac / shift change.</li>
+				<li class="tweak">Modified D Class flavortext with some roleplay hooks related to the 'rehabilitation' promise.</li>
+				<li class="tweak">Use the former Escape Train Hub for shift changes as well.</li>
+				<li class="tweak">Rename the area to a more neutral 'Train Station' and unbarricade it.</li>
+			</ul>
+			<h3 class="author">Steamp0rt updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Adds the totally radical SCP-420-J</li>
+			</ul>
+			<h3 class="author">TheLion1675 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Logistics, and the associated jobs, added.</li>
+				<li class="maptweak">Added an extra layer of security for the disposal loops in the Class D mining area. They require security level one, so if someone wants something delivered, they should get a guard.</li>
+				<li class="maptweak">Removed a redundant deep fryer and grill, and replaced it with a condimaster in D-Class Kitchen. Now also has a reagent grinder. Thanks to Nappist.</li>
+				<li class="maptweak">Airlock braces and duct tape added to Engineering. Thanks to Pandolphina.</li>
+				<li class="maptweak">Reduced the amount of webbing vests available in Engineering from 8 to 4 and also changed them to brown ones.</li>
+				<li class="bugfix">Fixed a bug where Senior EZ Agent and HCZ Zone Commander would spawn in opposite zones.</li>
+				<li class="bugfix">Fixed an issue with trams not having gravity, often causing gibbing when landing on someone who was unable to move back.</li>
+				<li class="tweak">Capped max Class D's to be 15.</li>
+			</ul>
+
+			<h2 class="date">13 October 2018</h2>
+			<h3 class="author">Unknown updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed CMO not being able to access their locker.</li>
+				<li class="bugfix">Fixed medical not having access to suit sensors. Since the rework of medical access, I've also added Security level 1 to the list, so that guards can access it.</li>
+				<li class="bugfix">Fixed EMT not being able to access the LCZ tram.</li>
+				<li class="bugfix">Fixed LCZ Commander not being able to access their office.</li>
+				<li class="bugfix">Fixed Security spawning with the incorrect side arm.</li>
+				<li class="rscdel">Removed xenobotany. It produced a lot of things that were unwanted.</li>
+				<li class="tweak">Replaced SCP-895's location in the camera monitor.</li>
+				<li class="tweak">Added job duty fluff for EMT.</li>
+			</ul>
+
+			<h2 class="date">12 October 2018</h2>
+			<h3 class="author">Buffalowing updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Updates scp-500's taste to be lore friendly.</li>
+				<li class="rscadd">Adds *snap emote</li>
+			</ul>
+			<h3 class="author">Memeopolis updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Cryo no longer kills you.</li>
+				<li class="bugfix">SCP-106 & SCP-049 now have resting icons.</li>
+				<li class="bugfix">Fixed SCP-999 doing damage instead of healing damage.</li>
+				<li class="bugfix">Fixed a cryopod bug where people didn't properly respawn.</li>
+				<li class="bugfix">Fixed screwdrivers being invisible 14% of the time.</li>
+				<li class="tweak">Made it impossible to drill very hard walls.</li>
+			</ul>
+			<h3 class="author">Pandolphina updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Makes lunchboxes lore friendly, and swaps the Nanotrasen lunchbox for the Foundation one made by Das</li>
+				<li class="rscdel">Removes laser and energy guns from the uplink, as well as teleporters</li>
+				<li class="rscdel">Deletes lasers and energy guns, as well as teleporters/bluespace stuff from the Protolathe.</li>
+			</ul>
+			<h3 class="author">TheLion1675 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added blood bags to the medical vendors.</li>
+				<li class="rscadd">New autoreply for those asking to be an SCP.</li>
+				<li class="rscadd">Added boxes of bloodtype patches for security platecarriers in each security locker.</li>
+				<li class="rscadd">Added Mercenary to the gamemode rotation.</li>
+				<li class="rscadd">Added two new snack variants. Find out for yourself. ;) Sprites are thanked to DasFox.</li>
+				<li class="rscadd">Added a new mechanic where if a security locker is unlocked, it will display the name of the person who unlocked it. While the locker can be unlocked by others currently, it will allow for more personalized lockers.</li>
+				<li class="rscadd">New locker room benches, made by DasFox.</li>
+				<li class="rscadd">New statue for the lobby. Courtesy of DasFox.</li>
+				<li class="rscadd">New uniforms, courtesy of DasFox.</li>
+				<li class="rscadd">New gloves for the security division. Courtesy of DasFox.</li>
+				<li class="iconadd">New pistol sprite. Courtesy of DasFox.</li>
+				<li class="bugfix">Fixed a bug where SCP-999 and SCP-012 were incorrectly named.</li>
+				<li class="bugfix">Fixed a bug where the CMO wouldn't spawn with a headset.</li>
+				<li class="bugfix">Fixed a bug where a Senior Scientist wouldn't spawn with a headset.</li>
+				<li class="bugfix">Fixed bug with SCP-500 and SCP-113 not having access requirements. This makes traitor objectives much harder when centered around these objects.</li>
+				<li class="bugfix">Fixes an issue where engineers can't set access on an airlock circuit.</li>
+				<li class="bugfix">Fixes SCP-106 upper not aligning with lower.</li>
+				<li class="bugfix">Added railings to central staircase.</li>
+				<li class="bugfix">Applied a fix to the admin cryo crate.</li>
+				<li class="bugfix">Fixed the Chief Engineer job not having equal science access relative to security level.</li>
+				<li class="spellcheck">Corrected certain security ID Cards being listed as level five, while not being level five.</li>
+				<li class="tweak">Added soft whitelist for medical jobs.</li>
+				<li class="tweak">New SCP-513 sprite. Now featuring sane size. Thanks to LucasChao.</li>
+				<li class="tweak">Makes walls stronger. Titanium walls can now take 750 damage, reinforced walls can take 500, and regular walls 150. This makes Titanium and Reinforced walls unable to be drilled by pickaxes, as per the update of Kachnov.</li>
+				<li class="tweak">Buff to regular windows. Their integrity is now 75, as opposed to 50.</li>
+				<li class="tweak">Buff to reinforced windows. Their integrity is now 150, as opposed to 100.</li>
+				<li class="tweak">Psychiatrist is now Class B, as opposed to Class A. This was an oversight from before.</li>
+				<li class="tweak">Access for bartender and chef capped. They will no longer have access to LCZ.</li>
+				<li class="tweak">Standard gun given to Security forces is now in .45 caliber, as opposed to 9mm.</li>
+				<li class="imageadd">Various new snack sprites, with the courtesy of DasFox.</li>
+				<li class="maptweak">Fixes oversight in D-Cell kitchen where there isn't any food processor.</li>
+				<li class="maptweak">Added railings to the central staircase.</li>
+				<li class="maptweak">Added better decals to the floor in upper LCZ. Should feel less dead now.</li>
+				<li class="maptweak">Adds tape recorders to research area's.</li>
+				<li class="maptweak">Removed blood bag storage. No longer necessary.</li>
+				<li class="maptweak">Removed surgical recovery room. It wasn't used and takes up space.</li>
+				<li class="maptweak">Removed access requirements on windoor in SCP-513.</li>
+				<li class="maptweak">Aesthetically overhauled lower LCZ.</li>
+				<li class="maptweak">Changed access on tram hub bar, kitchen and hydroponics to the unique access for chef and bartender.</li>
+				<li class="maptweak">Added radiocarbon spectrometer to Xenoarcheology.</li>
+				<li class="maptweak">Changed access requirements on SCP-173 to level 2 for Security and Science due to frequent mishaps that ruin the round.</li>
+				<li class="maptweak">Added a new disposal loop for artifacts and minerals. Yay, they now actually have use!</li>
+				<li class="maptweak">Added new fire hydrant lockers added around LCZ.</li>
+				<li class="maptweak">Altered Command area in the bunker to be slightly more secure against lesser threats.</li>
+				<li class="maptweak">Added an underground landing area for helicopters.</li>
+				<li class="maptweak">Altered access requirements on Admin Canteen. I've just about had it with bartenders/chefs creating lavaburgers and killing people. If you still manage to do this without valid reason, expect a hefty ban.</li>
+				<li class="experiment">Medical access refactor. Please report any bugs.</li>
+				<li class="experiment">New hud overlay for Class D's when you're looking through security goggles.</li>
+				<li class="experiment">Full rework of the Security department.</li>
+				<li class="experiment">Entirely new ranking structure. Job access has been restructured. We advice caution and going through it step by step to see what it unlocks, or pressing the job to see what rank is needed.</li>
+			</ul>
+
+			<h2 class="date">02 October 2018</h2>
+			<h3 class="author">Buffalowing updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">SCP-294 will now dispense correct reagents as they're put in.</li>
+			</ul>
+			<h3 class="author">Unknown updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed a wiring issue in Engineering.</li>
+				<li class="maptweak">Adds bioprinters to medical bay.</li>
+				<li class="maptweak">Added a disposal network to Xenobiology, to dispose of old and used slimes.</li>
+				<li class="maptweak">Removed duplicate light in D-Class zone, near the showers.</li>
+			</ul>
+
+			<h2 class="date">01 October 2018</h2>
+			<h3 class="author">Buffalowing updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Phased out a useless bluespace jump system.</li>
+				<li class="maptweak">Full implemented the escape tram.</li>
+				<li class="maptweak">Minor cosmetic changes to escape tram area.</li>
+				<li class="imageadd">Added a few animated sprites.</li>
+			</ul>
+			<h3 class="author">TheLion1675 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="experiment">Added in new subtypes for blastdoors. 1x2 and 1x4 remain in private testing currently.</li>
+				<li class="bugfix">Fixed SCP-012's camera network not showing.</li>
+				<li class="bugfix">Fixed Yellow Alert not being displayed on change alert level.</li>
+				<li class="bugfix">Fixed residual bugs in Guard Commander and Cell Warden.</li>
+				<li class="bugfix">Fixed some residual bugs with alert levels.</li>
+				<li class="bugfix">Fixed a critical bug where certain area's didn't count towards escaping the calamities in the round. Greentext now possible!</li>
+				<li class="bugfix">Fixed a bug with suspension field generators needing certain access. This has now been removed, and can thus be used by everyone.</li>
+				<li class="bugfix">Fixed a bug with alt titles for security still appearing.</li>
+				<li class="rscadd">New books! Security SoP, Foundation Regulations and more added. They are added to logical places, such as your pocket.</li>
+				<li class="rscadd">Re-added headsets to Science personnel.</li>
+				<li class="rscdel">Removed handheld radio's being spawned on Security Guards.</li>
+				<li class="rscdel">Removed handheld radio's being spawned on Scientists.</li>
+				<li class="maptweak">Added laptop vendors to places where standard laptops were removed.</li>
+				<li class="maptweak">Added a Chemistry area to the D-Class medical post.</li>
+				<li class="maptweak">Added some Nanomeds for the D-Class medical post.</li>
+				<li class="maptweak">Altered the aesthetic of the Tram Hub bathroom.</li>
+				<li class="maptweak">Relocated the Escape Train.</li>
+				<li class="maptweak">Remapped and relocated the bloody telecommunications area. I hope this fixes it.</li>
+				<li class="maptweak">Adds wrenches for the suspension field generators.</li>
+				<li class="tweak">Increased the amount of EMT's to 2.</li>
+				<li class="tweak">Nerfed the damage taken from SCP-106's Pocket Dimension from 5 to 3 every tick.</li>
+				<li class="tweak">Raised D-Class respawn rate from 5 minutes to 10 minutes.</li>
+				<li class="tweak">Made Mentor's OOC messages stand out a bit more. Their previous color was akin to the admin logs one, which made their messages be drowned out to admins.</li>
+				<li class="imageadd">Ported over a better rack sprite.</li>
+				<li class="soundadd">Added a new ambience file for 049's containment chamber.</li>
+			</ul>
+
+			<h2 class="date">29 September 2018</h2>
+			<h3 class="author">Buffalowing updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added additional lobby track.</li>
+				<li class="bugfix">Fixed admincryo command storing organs in generated crates</li>
+				<li class="bugfix">Posters are now lore friendly.</li>
+			</ul>
+			<h3 class="author">Memeopolis updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="experiment">Experimental fix to players not being able to set up character after disconnecting in the lobby and reconnecting in the same round.</li>
+				<li class="rscadd">Gave SCP-049 custom footstep sounds.</li>
+			</ul>
+			<h3 class="author">TheLion1675 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="experiment">Foundation 19 has banned all SCP13 staff and devs. Be sure to say hi to them if you run into them! Also, if you want a better experience, connect to scp13.site:106!</li>
+				<li class="experiment">Experimental fix towards certain area's and their reverb. Any issues, please let us know.</li>
+				<li class="wip">Full overhaul of current existing alert codes. Code Blue is now for Keter testing. Red is for Keter SCP escaping, Code Black remained the same. Code Orange, Yellow and Gray added. With thanks to LucasChao for the sprites.</li>
+				<li class="wip">New system that plays ambience on certain alert levels. With thanks to Kachnov.</li>
+				<li class="wip">New ambience added for hallways in Upper and Lower Light Containment. More ambience on the way in due time.</li>
+				<li class="bugfix">Fixed Black Alert not having an icon on the status screens.</li>
+				<li class="bugfix">Fixes D-Class Hydroponics lockers not spawning any items.</li>
+				<li class="bugfix">Radiation effects for mining now positively removed.</li>
+				<li class="bugfix">Fixed an oversight in the D-Class Area where the cryo'd D-Class wouldn't actually cryo.</li>
+				<li class="bugfix">Fixed an area in LCZ not being properly named.</li>
+				<li class="maptweak">Removed SCP-294 near the D-Block and replaced it with a cola vending machine.</li>
+				<li class="maptweak">Adds anomaly suits to Xenoarcheology laboratory.</li>
+				<li class="maptweak">Changed large webbing for NTF with Bandoliers for the sake of storage spaces.</li>
+				<li class="maptweak">Visually overhauled MTF base.</li>
+				<li class="maptweak">Changed the ERT backpack colors from red to blue, as they should be.</li>
+				<li class="maptweak">Adds radiation suit lockers to the xenoarcheology laboratory.</li>
+				<li class="maptweak">Adds Suspension Field generators to securely extract anomalies.</li>
+				<li class="maptweak">Removed SCP-590's containment chamber.</li>
+				<li class="maptweak">Added megaphones to main D-Class Checkpoint and security bubble.</li>
+				<li class="maptweak">SCP-012 overhauled. This is now much more lore-appropriate.</li>
+				<li class="rscdel">Removed Research taperoll from RD's locker. Useless stuff anyway.</li>
+				<li class="rscdel">Removed movement penalty for heavy armor plates. This should make Guard Commanders and MTF as fast as their lesser counterparts.</li>
+				<li class="rscdel">Fully removed the option to alter limbs. Making yourself amputated has never served anyone!</li>
+				<li class="rscdel">Removed cortical stack. This was previously used as a cloning alternative by Bay but serves no use here.</li>
+				<li class="rscdel">Removed the ability for synthetic organs. Assisted is still present.</li>
+				<li class="rscdel">Removed Autohiss preference in the global tab in character set up.</li>
+				<li class="rscdel">Removed the option to select NanoTrasen as brand for the mech fabricator.</li>
+				<li class="rscdel">Removed the ability to create mecha's. This should be reworked either way.</li>
+				<li class="rscadd">Donator item for Aptare. Thank you for your continued contribution and support!</li>
+				<li class="tweak">Removed all of the old NTF armor, and spawned one, fully decked out plate carrier, ready to throw on and deploy immediately to save time figuring things out from there.</li>
+				<li class="tweak">Updated ERT to correspond more to the fluff of the MTF. Keycard also changed.</li>
+				<li class="tweak">Changed Admincryo verb to be usable by full mods, instead of just admins.</li>
+				<li class="tweak">Altered the display colors of current SCP's on examine. This makes them identified based on classification. Red = Keter, Orange = Euclid, Green = Safe.</li>
+			</ul>
+
+			<h2 class="date">26 September 2018</h2>
+			<h3 class="author">Buffalowing updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Removed some mentions of NanoTrasen.</li>
+				<li class="bugfix">Fixed help intent on simple mobs displaying 'tries to help', and harm intent displaying a similar message.</li>
+				<li class="maptweak">Redesigned D-Class cells area</li>
+				<li class="maptweak">Added D-Class isolation area</li>
+				<li class="rscadd">D-Class cells now have individual door bolt locks.</li>
+				<li class="maptweak">Added Sector 7</li>
+				<li class="maptweak">Relocated SCP-113 & SCP-500 into Sector 7</li>
+				<li class="rscadd">Implemented Xenoarcheology & an anomalous materials lab</li>
+				<li class="maptweak">Minor changes to D-Class assignments</li>
+			</ul>
+			<h3 class="author">Unknown updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added a donator item.</li>
+				<li class="rscadd">Gives all security lockers flashes and pepperspray.</li>
+				<li class="tweak">Changes Zone Commander ablative leg and arm guards to ballistic ones.</li>
+				<li class="maptweak">Adds a grenade launcher to the emergency armory in the D-Class area. Contains 5 teargas and 5 cluster flashbang grenades.</li>
+			</ul>
+
+			<h2 class="date">25 September 2018</h2>
+			<h3 class="author">Affie updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Guns now hurt, a lot! Different guns hurt more than others. Go figure. This normally scales with the default damage, not always.</li>
+				<li class="tweak">999 is now a bit more effective and less likely to murder people. It's grapple is also a bit stronger since... The last iteration was pitiful.</li>
+			</ul>
+			<h3 class="author">TheLion1675 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="experiment">The Site 19 server banned all SCP13 devs and staff. Be sure to say hi to them if you run into them! Also, be sure to connect to scp13.site:106!</li>
+				<li class="rscdel">Removed an old autoreply. Sad RIP.</li>
+				<li class="rscadd">Added a new autoreply for forum, wiki and discord information.</li>
+				<li class="imageadd">New camera sprites, with thanks to UFRLammar.</li>
+				<li class="maptweak">Added a CAUTION! to the SCP-895 camera.</li>
+				<li class="maptweak">Added catwalks to LCZ hallways.</li>
+				<li class="maptweak">Adds a water tank to xenobiology.</li>
+				<li class="maptweak">Moves SCP-106's APC to the opposing wall.</li>
+				<li class="maptweak">Added Escape Train window and door lockdown.</li>
+				<li class="maptweak">Adds nanopaste for assisted organs.</li>
+				<li class="maptweak">Overhauled the bunker. Added a command area, including lounge for them (the scumbags!), and separated the medical area from the general area.</li>
+				<li class="tweak">Gives Guards a sane strength and dexterity again. This should prevent one-hit pops of the foot.</li>
+				<li class="tweak">Added alternative access for Archivist, who can now access all archives. Their console is ID locked, and the Archive is generally overhauled and redesigned. They now also have their own ID Card with their specific access. First job in many to come.</li>
+				<li class="tweak">Added two new steal objectives for C.I. Operatives.</li>
+				<li class="bugfix">Fixes some runtimes occurring when double catwalks spawn.</li>
+				<li class="bugfix">Fixes some area's in HCZ not spawning catwalks.</li>
+				<li class="bugfix">Adds a specific access level for keycard authentication devices. This should fix the RD being unable to use them.</li>
+				<li class="bugfix">Replaced several buggy airlocks in the tram and research area.</li>
+				<li class="bugfix">Fixed guards spawning with blue pouches for on their plate carrier. They are now black.</li>
+				<li class="bugfix">The escape train leaves again.</li>
+				<li class="bugfix">Fixes bartenders not being able to withdraw from the Booze-O-Mat.</li>
+			</ul>
+			<h3 class="author">steamp0rt updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Shapeshifters no longer need brains, or heads.</li>
+				<li class="rscadd">Shapeshifters, for 6 DNA points, can now buy armblades, to be used on people who annoy them or walk in on them while in the middle of a snack!</li>
+				<li class="spellcheck">Changed many references of 'Changelings' to 'Shapeshifters'</li>
+			</ul>
+
 			<h2 class="date">22 September 2018</h2>
 			<h3 class="author">TheLion1675 updated:</h3>
 			<ul class="changes bgimages16">
@@ -450,85 +789,6 @@
 				<li class="bugfix">Fixed SCP-513 not giving brain damage</li>
 				<li class="bugfix">Fixed the fix for SCP-513 not giving brain damage</li>
 				<li class="bugfix">Fixed the fix for the fix for SCP-513 not giving brain damage</li>
-			</ul>
-
-			<h2 class="date">24 August 2018</h2>
-			<h3 class="author">Affurit updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added Amnestics kinda.</li>
-			</ul>
-			<h3 class="author">Axios updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added a server whitelist for the player cap.</li>
-			</ul>
-			<h3 class="author">Ciel updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="maptweak">Fix missing wire in EZ</li>
-			</ul>
-			<h3 class="author">Memeopolis updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Ported wall, airlock, grille, and window sprites from Bay.</li>
-				<li class="rscadd">Added SCP-049. It can grab + reinforce a corpse to create SCP-049-1, which is immune to damage anywhere but the head. SCP-500 can change SCP-049-1 back into a human.</li>
-				<li class="bugfix">Fixed SCP-106 not being able to climb tables.</li>
-				<li class="tweak">Gave SCP-106 a better examine description.</li>
-				<li class="tweak">Gave SCP-106 the ability to phase past all structures.</li>
-				<li class="tweak">Made SCP-106 faster.</li>
-				<li class="tweak">Made SCP-106 weaken anyone it grabs, but only a bit.</li>
-				<li class="bugfix">Fixed SCP-106's AI.</li>
-				<li class="rscadd">Ported adminhelp automatic responses from CM.</li>
-				<li class="tweak">Made Class D not spawn with backpacks.</li>
-				<li class="rscadd">Added a 'Become D-Class' verb for ghosts.</li>
-				<li class="tweak">Renamed the 'Join as SCP' verb to 'Become SCP', and added a 5 minute timer to it.</li>
-				<li class="tweak">Adds a hard limit of 20 Class D Personnel at a time. Whenever one dies, another slot opens up.</li>
-				<li class="tweak">You can no longer defibrillate people who have ghosted.</li>
-				<li class="bugfix">Fixed copied paper not having the correct sprite.</li>
-				<li class="bugfix">Fixed mobs bleeding on the floor while in a disposal pipe.</li>
-				<li class="bugfix">Fixed FOV not working while in closets.</li>
-				<li class="rscadd">Made any 2+ pieces of paper automatically bundle at roundstart.</li>
-				<li class="bugfix">Fixed shuttles leaving behind airless plating.</li>
-				<li class="bugfix">Fixed SCP-106 airlock phasing bugs.</li>
-				<li class="bugfix">Fixed SCP-106 not recovering from damage in his pocket dimension.</li>
-				<li class="tweak">Made SCP-106 not feel pain.</li>
-				<li class="tweak">Removed human emotes from all human-type SCPs (currently just SCP-106).</li>
-				<li class="rscadd">Messages observers when a new D-Class slot has been opened.</li>
-				<li class="bugfix">Fixed SCP-500 not returning SCP-049-1 to its original species.</li>
-				<li class="bugfix">Fixed various SCP-049 and SCP-106 AI errors.</li>
-				<li class="tweak">Gave SCP-049 a Pestilence feature. It can only attack people who are 'infected'. Those infected will have an overlay only visible to SCP-049.</li>
-				<li class="rscadd">Gave SCP-049 and SCP-049-1 a verb that lets them communicate remotely.</li>
-				<li class="tweak">Doubled the damage threshold at which SCP-106 flees to the PD.</li>
-			</ul>
-			<h3 class="author">TheLion1675 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Altered in-game date.</li>
-				<li class="tweak">Updated SCP-500's icon to be more canonical.</li>
-				<li class="tweak">Replaced Delta alert sound with revised sound.</li>
-				<li class="tweak">Overhauled computer and consoles with new sprites from Bay.</li>
-				<li class="tweak">Overhauled Laptop sprites with new ones from Bay.</li>
-				<li class="soundadd">Altered sound for the vote panel to be less startling.</li>
-				<li class="rscadd">Adds kneepads to the Security lockers.</li>
-				<li class="rscadd">Added standard side arms for jobs that need it. (CMO and CE included.)</li>
-				<li class="rscadd">Adds documentation for SCP-513.</li>
-				<li class="rscadd">First round of three month+ backers to the changelog.</li>
-				<li class="rscdel">Removed holomaps. Signs will have to do.</li>
-				<li class="sounddel">Removed Supermarine from lobby music.</li>
-				<li class="soundadd">Added new lobby track.</li>
-				<li class="imageadd">Adds new medical decals.</li>
-				<li class="bugfix">Fixed leftover remains of sub-species clothing in lockers frequently used. Further issues should be reported.</li>
-				<li class="bugfix">Fixed wrong access requirements on welding and electrical lockers. Further oversights should be reported.</li>
-				<li class="bugfix">Fix up wrong logo's.</li>
-				<li class="bugfix">Fixes D-Class joining on wrong location.</li>
-				<li class="bugfix">Fixes up weird area bug in UHCZ.</li>
-				<li class="bugfix">Fix an issue with MCR leading to space.</li>
-				<li class="bugfix">Fix an issue with D-Class mining equipment not spawning.</li>
-				<li class="bugfix">Fix an issue in the Comms Tower that lead from space to the level below.</li>
-				<li class="bugfix">Fix an issue with incomplete wiring in Engineering maint.</li>
-				<li class="bugfix">Fixes a lot of issues with open area's/open spaces to spess. Should now be fixed, and no longer decompress.</li>
-				<li class="tweak">Removed duplicate Engineering Tram Control Console in MCR.</li>
-			</ul>
-			<h3 class="author">steamport updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">SCP-513. Ring it, and SCP-513-1 will torment you.</li>
-				<li class="rscadd">SCP-895. The coffin full of fake, unimaginable, horrors.</li>
 			</ul>
 		</div>
 

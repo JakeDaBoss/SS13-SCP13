@@ -8,7 +8,7 @@
 
 	matter = list(DEFAULT_WALL_MATERIAL = 50,"glass" = 50)
 
-	req_access = list(access_engine)
+	req_access = list(access_mtflvl2)
 
 	var/secure = 0 //if set, then wires will be randomized and bolts will drop if the door is broken
 	var/list/conf_access = list()
@@ -30,7 +30,7 @@
 /obj/item/weapon/airlock_electronics/tg_ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, \
 	datum/tgui/master_ui = null, datum/ui_state/state = tg_hands_state)
 
-	tgui_process.try_update_ui(user, src, ui_key, ui, force_open)
+	SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "airlock_electronics", src.name, 1000, 500, master_ui, state)
 		ui.open()
@@ -114,7 +114,7 @@
 	lockable = 0
 
 /obj/item/weapon/airlock_electronics/brace/tg_ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = tg_deep_inventory_state)
-	tgui_process.try_update_ui(user, src, ui_key, ui, force_open)
+	SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "airlock_electronics", src.name, 1000, 500, master_ui, state)
 		ui.open()

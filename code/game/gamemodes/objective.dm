@@ -417,7 +417,9 @@ datum/objective/steal
 		"the nuke disk pinpointer" = /obj/item/weapon/pinpointer,
 		"the SCP-500 pill bottle" = /obj/item/weapon/storage/pill_bottle/scp500,
 		"SCP-113" = /obj/item/device/scp113,
-		"SCP-513" = /obj/item/scp513
+		"SCP-513" = /obj/item/scp513,
+		"the documentation of SCP-939" = /obj/item/weapon/paper/scp/keter/scp939,
+		"the documentation of SCP-106" = /obj/item/weapon/paper/scp/keter/scp106
 	)
 
 	var/global/possible_items_special[] = list(
@@ -477,7 +479,7 @@ datum/objective/steal
 				return found_amount>=target_amount
 
 			if("a functional AI")
-				for(var/mob/living/silicon/ai/ai in SSmobs.mob_list)
+				for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
 					if(ai.stat == DEAD)
 						continue
 					var/turf/T = get_turf(ai)
